@@ -1,0 +1,62 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} {{ setting[0].title }} {% endblock %}
+{% block keywords %}{{ setting[0].keywords }}{% endblock %}
+{% block description %}{{ setting[0].description }}{% endblock %}
+
+
+{% block body %}
+
+
+    <div id="colorlib-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 animate-box">
+                    <h3>Contact Information</h3>
+                    <div class="row contact-info-wrap">
+                        <div class="col-md-3">
+                            <p><span><i class="icon-location-2"></i></span> {{ setting[0].contact |raw}} </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><span><i class="icon-paperplane"></i></span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><span><i class="icon-globe"></i></span> <a href="#">luxehotel.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-1 animate-box">
+                    <h3>Get In Touch</h3>
+                    {{ include('message.html.twig') }}
+                    <form name="messages" method="post">
+                        <div id="messages">
+                            <div class="form-group">
+                                <label for="messages_name">Name</label>
+                                <input type="text" id="messages_name" name="messages[name]" maxlength="20" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="messages_email">Email</label>
+                                <input type="text" id="messages_email" name="messages[email]" maxlength="50" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="messages_subject">Subject</label>
+                                <input type="text" id="messages_subject" name="messages[subject]" maxlength="75" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="messages_message">Message</label>
+                                <input type="text" id="messages_message" name="messages[message]" maxlength="255" class="form-control" />
+                            </div>
+                            <input type="hidden" id="messages__token" name="token" value="{{ csrf_token('form-message')}}" />
+                        </div>
+                        <button class="btn btn-primary">Send Message</button>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

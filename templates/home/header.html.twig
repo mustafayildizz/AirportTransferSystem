@@ -1,0 +1,50 @@
+<div class="colorlib-loader"></div>
+
+<div id="page">
+	<nav class="colorlib-nav" role="navigation">
+
+		<div class="top-menu">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-2">
+						<div id="colorlib-logo">
+							<a href="/">Car Reservations</a>
+						</div>
+					</div>
+					<div class="col-xs-10 text-right menu-1">
+						<ul>
+							<li class="active">
+								<a href="/">Home</a>
+							</li>
+							<li>
+								<a href="/about">About</a>
+							</li>
+							<li>
+								<a href="/contact">Contact</a>
+							</li>
+
+							{% if app.user %}
+								<li class="has-dropdown">
+								<a href="/user">{{ app.user.name }}
+								<img class="img-xs rounded-circle" src="{{ asset('uploads/images/' ~ app.user.image) }}" alt="Avatar" height="40">
+									<ul class="dropdown">
+										<li>
+											<a href="/user">My Profile</a>
+										</li>
+										<li>
+											<a href="/logout">Logout</a>
+										</li>
+									</ul>
+								</a>
+								</li>
+							{% else %}
+								<li>
+									<a href="/loginuser">Login</a>
+								</li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>

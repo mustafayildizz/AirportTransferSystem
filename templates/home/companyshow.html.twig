@@ -1,0 +1,149 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} {{ setting[0].title }} {% endblock %}
+{% block keywords %}{{ setting[0].keywords }}{% endblock %}
+{% block description %}{{ setting[0].description }}{% endblock %}
+
+
+{% block body %}
+    <div id="colorlib-rooms" class="colorlib-light-grey">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12 animate-box">
+                    <div class="owl-carousel owl-carousel2">
+                        {% for rs in company %}
+                        <div class="item">
+                            <a href="#" class="room image-popup-link"
+                               style="background-image: url({{ asset('uploads/images/' ~  rs.image) }});"></a>
+
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <article class="animate-box">
+                        <div class="desc">
+                            <div class="meta">
+                                <p>
+                                    <span><a href="#">Details</a></span>
+                                </p>
+                            </div>
+                            <h2><a href="#"></a></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, qui quod ipsum harum id, minima nesciunt! Saepe soluta, vitae quas expedita voluptatem voluptates placeat numquam provident quis, atque nisi iure?</p>
+                        </div>
+                    </article>
+                </div>
+
+<br>
+                <div class="col-md-12">
+                    <article class="animate-box">
+                        <div class="desc">
+                            <div class="meta">
+                                <p>
+                                    <span><a href="#">Price and Reserve</a></span>
+                                </p>
+                            </div>
+                            <h1>Car index</h1>
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                    <th>Price</th>
+                                    <th>actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for car in cars %}
+                                    <tr>
+                                        <td>{{ car.title }}</td>
+                                        <td>{{ car.description }}</td>
+                                        <td><img src="{{ asset('uploads/images/' ~  car.image) }}"></td>
+                                        <td>{{ car.price }}</td>
+                                        <td>
+                                            <form action="{{ path('user_reservation_new', {'hid': car.companyid,'cid': car.id}) }}">
+                                                <div id="reservation">
+                                                    <label for="date">Check-in:</label>
+                                                    <div class="form-field">
+                                                        <i class="icon icon-calendar2"></i>
+                                                        <input type="text" id="checkin" name="checkin" class="form-control date" placeholder="Check-in date">
+                                                    </div>
+                                                </div>
+                                                Days <input type="number" id="days" name="days" value="1">
+                                                <input type="submit" value="Reserve Car" class="btn btn-success">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="9">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                           </div>
+                    </article>
+                </div>
+
+                <br>
+                <div class="col-md-12">
+                    <article class="animate-box">
+                        <div class="desc">
+                            <div class="meta">
+                                <p>
+                                    <span><a href="#">Comments</a></span>
+                                </p>
+                            </div>
+                            {% for rs in comment %}
+                            <h2><a href="#">{{ rs.subject }}</a></h2>
+                            <p>{{ rs.comment }}</p>
+                                <hr>
+                            {% endfor %}
+                        </div>
+                    </article>
+                    {% if app.user %}
+                    <h3>Get In Touch</h3>
+                    {{ include('message.html.twig') }}
+                    <form name="comment" action="{{ path('user_new_comment', {'id': cars[0].id}) }}" method="post">
+                        <div id="comment">
+
+                            <div class="form-group">
+                                <label for="comment_subject">Subject</label>
+                                <input type="text" id="comment_subject" name="comment[subject]" maxlength="75" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                               <select id="comment_rate" name="comment[rate]" class="form-control">
+                                   <option>1</option>
+                                   <option>2</option>
+                                   <option>3</option>
+                                   <option>4</option>
+                                   <option>5</option>
+                               </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment_message">Comment</label>
+                                <input type="text" id="comment_comment" name="comment[comment]" maxlength="255" class="form-control" />
+                            </div>
+                            <input type="hidden" id="comment__token" name="token" value="{{ csrf_token('comment')}}" />
+                        </div>
+                        <button class="btn btn-primary">Send Comment</button>
+                    </form>
+                    {% else %}
+                        <li>
+                            <a href="/loginuser">If you want to add comment please Login</a>
+                        </li>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-12 text-center animate-box">
+                    <a href="/">View all Cars <i class="icon-arrow-right3"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

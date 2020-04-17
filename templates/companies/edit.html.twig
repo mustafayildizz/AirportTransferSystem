@@ -1,0 +1,18 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Edit Companies{% endblock %}
+
+{% block body %}
+    {{ include('home/sidebar.html.twig') }}
+<div class="main-panel">
+    <div class="content-wrapper">
+    <h1>Edit Companies</h1>
+
+    {{ include('/companies/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+    {{ include('/companies/_delete_form.html.twig') }}
+    </div>
+</div>
+    </div>
+{% endblock %}

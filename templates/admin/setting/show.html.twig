@@ -1,0 +1,121 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Setting{% endblock %}
+
+{% block body %}
+<div class="main-panel">
+		<div class="content-wrapper">
+    <h1>Setting</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ setting.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ setting.title }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ setting.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Descripton</th>
+                <td>{{ setting.description }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ setting.company }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ setting.address }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ setting.phone }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ setting.fax }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ setting.email }}</td>
+            </tr>
+            <tr>
+                <th>Smtpserver</th>
+                <td>{{ setting.smtpserver }}</td>
+            </tr>
+            <tr>
+                <th>Smtpemail</th>
+                <td>{{ setting.smtpemail }}</td>
+            </tr>
+            <tr>
+                <th>Smtppassword</th>
+                <td>{{ setting.smtppassword }}</td>
+            </tr>
+            <tr>
+                <th>Smtpport</th>
+                <td>{{ setting.smtpport }}</td>
+            </tr>
+            <tr>
+                <th>Facebook</th>
+                <td>{{ setting.facebook }}</td>
+            </tr>
+            <tr>
+                <th>Instagram</th>
+                <td>{{ setting.instagram }}</td>
+            </tr>
+            <tr>
+                <th>Twitter</th>
+                <td>{{ setting.twitter }}</td>
+            </tr>
+            <tr>
+                <th>Aboutus</th>
+                <td>{{ setting.aboutus|raw }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ setting.contact|raw }}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ setting.reference|raw }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ setting.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('setting_index') }}"  class="btn btn-primary btn-fw" >Back to List  </a>
+
+    <a href="{{ path('setting_edit', {'id': setting.id}) }}"  class="btn btn-primary btn-fw">Edit</a>
+
+     </div>
+    	<footer class="footer">
+			<div class="container-fluid clearfix">
+				<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
+					<a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+				<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
+					<i class="mdi mdi-heart text-danger"></i>
+				</span>
+			</div>
+		</footer>
+		<!-- partial -->
+	</div>
+	<!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends --></div><!-- container-scroller --><!-- plugins:js -->
+<script src="{{ asset('assets') }}/admin/vendors/js/vendor.bundle.base.js">
+</script><script src="{{ asset('assets') }}/admin/vendors/js/vendor.bundle.addons.js">
+</script><!-- endinject --><!-- Plugin js for this page--><!-- End plugin js for this page--><!-- inject:js -->
+<script src="{{ asset('assets') }}/admin/js/shared/off-canvas.js"> 
+</script><script src="{{ asset('assets') }}/admin/js/shared/misc.js">
+</script><!-- endinject --><!-- Custom js for this page--><!-- End custom js for this page-->
+
+{% endblock %}

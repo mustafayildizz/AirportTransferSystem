@@ -1,0 +1,212 @@
+{% extends 'homebase.html.twig' %}
+{% block title %} {{ setting[0].title }} {% endblock %}
+{% block keywords %}{{ setting[0].keywords }}{% endblock %}
+{% block description %}{{ setting[0].description }}{% endblock %}
+
+
+{% block body %}
+    {% block slider %} {% include "home/slider.html.twig" %} {% endblock %}
+    <div id="colorlib-reservation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 search-wrap">
+                    <form method="post" action="{{ path('home_car_list') }}" class="colorlib-form">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="date">Check-in:</label>
+                                    <div class="form-field">
+                                        <i class="icon icon-calendar2"></i>
+                                        <input size="16" type="text" required id="date" class="form-control date" name="checkin"
+                                               placeholder="Check-in date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="date">Departure</label>
+                                    <div class="form-field">
+                                        <input type="text" id="departure" class="form-control" name="departure" required placeholder="Kalkış Noktası">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="date">Arrival</label>
+                                    <div class="form-field">
+                                       <input type="text" id="arrival" class="form-control" required name="arrival" placeholder="Varış Noktası">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="date">Time</label>
+                                    <div class="form-field">
+                                        <input type="time" id="time" class="form-control" required name="usr_time">
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="col-md-2">
+                                    <input type="submit" name="submit" id="submit" value="Search"
+                                           class="btn btn-primary btn-block">
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="colorlib-services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 animate-box text-center">
+                    <div class="services">
+							<span class="icon">
+								<i class="flaticon-reception"></i>
+							</span>
+                        <h3>24/7 Front Desk</h3>
+                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
+                            ocean. A small river named Duden flows by their place and supplies</p>
+                    </div>
+                </div>
+                <div class="col-md-3 animate-box text-center">
+                    <div class="services">
+							<span class="icon">
+								<i class="flaticon-herbs"></i>
+							</span>
+                        <h3>Spa Suites</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia leo in metus ullamcorper,
+                            sed consequat justo mattis. Pellentesque tempor quam. </p>
+                    </div>
+                </div>
+                <div class="col-md-3 animate-box text-center">
+                    <div class="services">
+							<span class="icon">
+								<i class="flaticon-car"></i>
+							</span>
+                        <h3>Transfer Services</h3>
+                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
+                            ocean. A small river named Duden flows by their place and supplies</p>
+                    </div>
+                </div>
+                <div class="col-md-3 animate-box text-center">
+                    <div class="services">
+							<span class="icon">
+								<i class="flaticon-cheers"></i>
+							</span>
+                        <h3>Restaurant &amp; Bar</h3>
+                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
+                            ocean. A small river named Duden flows by their place and supplies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="colorlib-rooms" class="colorlib-light-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
+                    <span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i
+                                class="icon-star-full"></i><i class="icon-star-full"></i></span>
+                    <h2>Bütün araçlarımız</h2>
+                    <p>Size en iyi hizmeti vermek için elimizden gelenin en iyisini yapmaya çalışıyoruz.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 animate-box">
+                    <div class="owl-carousel owl-carousel2">
+                        {% for car in cars %}
+                        <div class="item">
+                            <a href="{{ path('home_car_detail', {'id':car.id}) }}" class="room"
+                               style="background-image: url({{ asset('uploads/images/' ~  car.image) }});"></a>
+                            <div class="desc text-center">
+                                <span class="rate-star"><i class="icon-star-full full"></i><i
+                                            class="icon-star-full full"></i><i class="icon-star-full full"></i><i
+                                            class="icon-star-full"></i><i class="icon-star-full"></i></span>
+                                <h3><a href="rooms-suites.html">{{ car.title }}</a></h3>
+                                <p class="price">
+                                    <span class="currency">$</span>
+                                    <span class="price-room">{{car.price}}</span>
+                                </p>
+                                <ul>
+                                    <li><i class="icon-check"></i> {{ car.description }}</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="colorlib-testimony" class="colorlib-light-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
+                    <span><i class="icon-star-full"></i><i class="icon-star-full"></i><i
+                                class="icon-star-full"></i></span>
+                    <h2>Our Satisfied Guests says</h2>
+                    <p>We love to tell our successful far far away, behind the word mountains, far from the countries
+                        Vokalia and Consonantia, there live the blind texts.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 animate-box">
+                    <div class="testimony text-center">
+                        <span class="img-user"
+                              style="background-image: url({{ asset('assets') }}/home/images/person2.jpg);"></span>
+                        <span class="user">Brian Doe</span>
+                        <small>Satisfied Customer</small>
+                        <blockquote>
+                            <p></i> Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem
+                                provident. Odit ab aliquam dolor eius.</p>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-box">
+                    <div class="testimony text-center">
+                        <span class="img-user"
+                              style="background-image: url({{ asset('assets') }}/home/images/person1.jpg);"></span>
+                        <span class="user">Nathalie Miller</span>
+                        <small>Satisfied Customer</small>
+                        <blockquote>
+                            <p></i> Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem
+                                provident. Odit ab aliquam dolor eius.</p>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-box">
+                    <div class="testimony text-center">
+                        <span class="img-user"
+                              style="background-image: url({{ asset('assets') }}/home/images/person3.jpg);"></span>
+                        <span class="user">Shara Jones</span>
+                        <small>Satisfied Customer</small>
+                        <blockquote>
+                            <p></i> Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem
+                                provident. Odit ab aliquam dolor eius.</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="colorlib-subscribe" style="background-image: url({{ asset('assets') }}/home/images/img_bg_2.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
+                    <span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i
+                                class="icon-star-full"></i><i class="icon-star-full"></i></span>
+                    <p style="color:white;">Get A 50% Discounts in every Transfer, Reserve now!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

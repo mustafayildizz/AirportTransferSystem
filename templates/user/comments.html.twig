@@ -1,0 +1,48 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    {{ include('home/sidebar.html.twig') }}
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <h1>Comment index</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Subject</th>
+                    <th>Comment</th>
+                    <th>Status</th>
+                    <th>Ip</th>
+                    <th>Rate</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for comment in comments %}
+                    <tr>
+                        <td>{{ comment.id }}</td>
+                        <td>{{ comment.subject }}</td>
+                        <td>{{ comment.comment }}</td>
+                        <td>{{ comment.status }}</td>
+                        <td>{{ comment.ip }}</td>
+                        <td>{{ comment.rate }}</td>
+                        <td>
+                            <a href="{{ path('admin_comment_show', {'id': comment.id}) }}" class="btn-primary btn">Show</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="10">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+
+
+{% endblock %}

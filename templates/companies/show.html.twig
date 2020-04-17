@@ -1,0 +1,84 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Company Details{% endblock %}
+
+{% block body %}
+    {{ include('home/sidebar.html.twig') }}
+    <div class="main-panel">
+        <div class="content-wrapper">
+
+        <h1>Companies</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ company.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ company.title }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ company.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ company.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ asset('uploads/images/' ~  company.image) }}" style="height: 110px; width: 110px;"></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ company.address }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ company.phone }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ company.fax }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ company.email }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ company.country }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ company.city }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ company.location }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ company.status }}</td>
+            </tr>
+            <tr>
+                <th>Detail</th>
+                <td>{{ company.detail }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ company.userid }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('user_companies_edit', {'id': company.id}) }}" class="btn btn-primary">Edit</a>
+
+    {{ include('/companies/_delete_form.html.twig') }}
+    </div>
+    </div>
+    </div>
+{% endblock %}

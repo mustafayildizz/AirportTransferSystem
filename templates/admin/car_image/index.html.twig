@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarImage index{% endblock %}
+
+{% block body %}
+    <h1>CarImage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Carid</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for car_image in car_images %}
+            <tr>
+                <td>{{ car_image.id }}</td>
+                <td>{{ car_image.title }}</td>
+                <td>{{ car_image.image }}</td>
+                <td>{{ car_image.carid }}</td>
+                <td>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_car_image_new') }}">Create new</a>
+{% endblock %}

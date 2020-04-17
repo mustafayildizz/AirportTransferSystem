@@ -1,0 +1,16 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}New Companies{% endblock %}
+
+{% block body %}
+          {{ include('home/sidebar.html.twig') }}
+<div class="main-panel">
+    <div class="content-wrapper">
+    <h1>Create new Companies</h1>
+
+    {{ include('/companies/_form.html.twig') }}
+
+    </div>
+</div>
+    </div>
+{% endblock %}

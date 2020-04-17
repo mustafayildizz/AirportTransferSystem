@@ -1,0 +1,14 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}{{ company.title }}{% endblock %}
+
+{% block body %}
+<div class="main-panel">
+    <div class="content-wrapper">
+    <h4>Create new Car</h4>
+
+    {{ include('admin/car/_form.html.twig') }}
+
+    <a href="{{ path('admin_car_index') }}" class="btn btn-primary">Back to list</a>
+    </div>
+{% endblock %}

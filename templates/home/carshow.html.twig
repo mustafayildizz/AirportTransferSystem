@@ -1,0 +1,62 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} {{ setting[0].title }} {% endblock %}
+{% block keywords %}{{ setting[0].keywords }}{% endblock %}
+{% block description %}{{ setting[0].description }}{% endblock %}
+
+
+{% block body %}
+
+
+    <div id="colorlib-rooms" class="colorlib-light-grey">
+    <div class="container">
+        <h1>Car index</h1>
+    <div class="col-md-12">
+
+        Departure : {{ data.departure }} <br>
+        Arrival : {{ data.arrival }} <br>
+        Date and Time :  {{ data.time }} <br>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Category</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for car in cars %}
+        <tr>
+            <td>{{ car.category }}</td>
+            <td>{{ car.title }}</td>
+            <td><img src="{{ asset('uploads/images/' ~  car.image) }}"></td>
+            <td>{{ car.price }}</td>
+            <td>
+                <form action="{{ path('user_reservation_deneme', {'cid': car.id}) }}" method="post">
+                    <input type="hidden" id="checkin" name="checkin" value="{{ data.checkin|date("m/d/y") }}">
+                    <input type="hidden" name="departure" value="{{ data.departure }}">
+                    <input type="hidden" name="arrival" value="{{ data.arrival }}">
+                    <input type="hidden" name="usr_time" value="{{ data.time }}">
+                    <input type="hidden" id="reservation__token" name="token"
+                           value="{{ csrf_token('form-reservation') }}"/>
+                    <button class="btn btn-primary">Reserve Transfer</button>
+                </form>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="9">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

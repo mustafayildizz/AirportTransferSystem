@@ -1,0 +1,85 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Companies{% endblock %}
+
+{% block body %}
+<div class="main-panel">
+		<div class="content-wrapper">
+    <h1>Companies</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ company.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ company.title }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ company.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ company.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ company.image }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ company.address }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ company.phone }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ company.fax }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ company.email }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ company.country }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ company.city }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ company.location }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ company.status }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ company.createdAt ? company.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ company.updatedAt ? company.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_companies_index') }}" class="btn btn-primary btn-fw">Back to List</a>
+    
+    <a href="{{ path('admin_companies_edit', {'id': company.id}) }}" class="btn btn-primary btn-fw">Edit</a>
+    <br>
+    <br>
+
+    {{ include('admin/companies/_delete_form.html.twig') }}
+
+     </div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New Companies{% endblock %}
+
+{% block body %}
+
+<div class="main-panel">
+		<div class="content-wrapper">
+
+    <h1>Create new Companies</h1>
+
+    {{ include('admin/companies/_form.html.twig') }}
+
+    <a href="{{ path('admin_companies_index') }}">back to list</a>
+
+      </div>
+
+{% endblock %}

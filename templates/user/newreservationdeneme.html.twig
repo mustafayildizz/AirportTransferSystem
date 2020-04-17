@@ -1,0 +1,80 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+    {{ include('home/sidebar.html.twig') }}
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <h2>Reservation Car</h2>
+            <h4 class="font-weight-bold">"{{ company.title }}" adlı firmadan "{{ car.title }}" aracını
+                transfer ediyorsunuz</h4>
+            <h4 class="font-weight-bold"></h4>
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Car Name</th>
+                    <td>{{ car.title }}</td>
+                </tr>
+                <tr>
+                    <th>Departure</th>
+                    <td>{{ data.departure }}</td>
+                </tr>
+                <tr>
+                    <th>Arrival</th>
+                    <td>{{ data["arrival"] }}</td>
+                </tr>
+                <tr>
+                    <th>Date and Time</th>
+                    <td>{{ data["checkin"] }} {{ data["time"] }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h3>Get In Touch</h3>
+            {{ include('message.html.twig') }}
+            <form name="reservation" method="post">
+
+                    <div class="form-group">
+                        <label for="reservation_name">Name</label>
+                        <input type="text" id="reservation_name" name="reservation[name]" value="{{ app.user.name }}"
+                               maxlength="20"
+                               class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservation_surname">Name</label>
+                        <input type="text" id="reservation_surname" name="reservation[surname]"
+                               value="{{ app.user.surname }}"
+                               maxlength="20" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservation_email">Email</label>
+                        <input type="text" id="reservation_email" name="reservation[email]" value="{{ app.user.email }}"
+                               maxlength="50" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservation_subject">Subject</label>
+                        <input type="text" id="reservation_phone" name="reservation[phone]" maxlength="75"
+                               class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservation_message">Message</label>
+                        <input type="text" id="reservation_message" name="reservation[message]" maxlength="255"
+                               class="form-control"/>
+                    </div>
+                <input type="hidden" name="checkin" value="{{ data["checkin"] }}">
+                <input type="hidden" name="departure" value="{{ data.departure }}">
+                <input type="hidden" name="arrival" value="{{ data.arrival }}">
+                <input type="hidden" name="usr_time" value="{{ data.time }}">
+                <input type="hidden" id="reservation__token" name="token"
+                       value="{{ csrf_token('form-reservation') }}"/>
+                <button class="btn btn-primary">Send Reservation</button>
+            </form>
+
+
+            {{ include('user/_delete_form.html.twig') }}
+        </div>
+    </div>
+    </div>
+{% endblock %}

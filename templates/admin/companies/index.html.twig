@@ -1,0 +1,68 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Companies index{% endblock %}
+
+{% block body %}
+
+<SCRIPT language="JavaScript" type="text/javascript">
+    function openWin(windowUrl, windowName, windowFeatures) {window.open(windowUrl, windowName, windowFeatures);}
+</SCRIPT>
+
+<div class="main-panel">
+		<div class="content-wrapper">
+    <h1>{{companies[0].title}}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Fax</th>
+                <th>Email</th>
+                <th>Country</th>
+                <th>City</th>
+{#                <th>Cars</th>#}
+                <th>Image Gallery</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+            <tr>
+                <td><img src="{{ asset('uploads/images/' ~  company.image) }}"></td>
+                <td>{{ company.address }}</td>
+                <td>{{ company.phone }}</td>
+                <td>{{ company.fax }}</td>
+                <td>{{ company.email }}</td>
+                <td>{{ company.country }}</td>
+                <td>{{ company.city }}</td>
+{#                <td>#}
+{#                    <a href="javascript:openWin('{{ path('admin_car_new', {'id': company.id}) }}', '', 'toolbar=no, location=no, directories=0, status=no, top=50, left=100, menuBar=no, scrollBars=yes, resizable=no, width=900, height=600');">#}
+{#                        <img src="{{ asset('assets/admin/images/car.png') }}" height="40">#}
+{#                    </a>#}
+{#                </td>#}
+               <td>
+                    <a href="javascript:openWin('{{ path('admin_image_new', {'id': company.id}) }}', '', 'toolbar=no, location=no, directories=0, status=no, top=50, left=100, menuBar=no, scrollBars=yes, resizable=no, width=900, height=600');">
+                    <img src="{{ asset('assets/admin/images') }}/gallery.png" height="40">
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('admin_companies_show', {'id': company.id}) }}" class="btn btn-primary ">show</a>
+                </td>
+                <td>
+                    <a href="{{ path('admin_companies_edit', {'id': company.id}) }}"  class="btn btn-primary">edit</a>
+                </td>
+            </tr>
+           
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <hr>
+     </div>
+
+{% endblock %}
